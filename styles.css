@@ -4,9 +4,10 @@ body{
     background-color: white;
 }
 .border-box{
+    min-width: 400px;
     width: 30%;
-    height: 100vh;
     margin: auto;
+    height: 1000px;
     border-radius: 50px;
     background-color: #3c4461;
     box-shadow: 0 0 10px 5px #555;
@@ -26,7 +27,11 @@ body{
     margin: 25px auto;
     border-radius: 25px;
     height: 220px;
-    background-color: #FF3342;
+    background-color: blueviolet;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
     
 }
 
@@ -44,11 +49,13 @@ body{
 
 .child-root{
     margin: auto;
+    color: #00BFBF;
+    font-weight: 600;
 }
 
 a:visited, a:link{
     text-decoration: none;
-    color: whitesmoke;
+    color: #00BFBF;
 }
 
 legend[class="child-root"]:hover{
