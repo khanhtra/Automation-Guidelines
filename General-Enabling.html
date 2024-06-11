@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title class="main-title">Home</title>
+    <link rel="stylesheet" href="styles-general-enabling.css">
+</head>
+<body>
+    <div class="main-header">
+        <h1>General Automation Guidelines for Enabling</h1>
+    </div>
+   <!------Things to think about section------>
+<div class="section-blocks">
+    <h2 class="general-page-tile">Things To Think About Before Script Creation</h2>
+
+    <ol class="list-ordered">
+        <li class="bullet-points">Base your scripts off the story's requirements. Make sure your script is testing for the acceptance criteria.</li>
+        <li class="bullet-points">Two main things to look for in automation: Independency and Repeatability.</li>    
+        <li class="bullet-points">Some things to consider: Automation isn't always going to replicate user experience so make sure you keep in mind that when writing scripts, would it make more sense to automate or manually check? Take note of coverage, will your test case cover multiple acceptance criteria or just a singular one? Does the test case behave differently between DEV and QA?</li>
+        <li class="bullet-points">Some tests might require you to create an object before the test can execute, (i.e., Files, Assets, Units, etc.).</li>
+        <li class="bullet-points">Some test might be easier to write if you create an object that will stay in the environment permanently and you are able to base your test off that created object.</li>
+        <li class="bullet-points">Make sure to include documentation in your code where it makes sense, some test cases might need pre-requisites or a certain state to pass, be sure to make note of these cases.</li>
+        <li class="bullet-points">Remove ambiguity in your test cases: a test case should not sometimes pass and sometimes fail. Must either pass or fail (apart from things like timing issues).</li>
+    </ol>
+</div>
+
+<!------Work Flow section------>
+<div class="section-blocks">
+    <h2 class="general-page-tile">Work Flow</h2>
+
+    <ol class="list-ordered">
+        <li class="bullet-points">Gather requirements and think of how automation will target the acceptance criteria.</li>
+        <li class="bullet-points">Look at the AutoTests repo, determine if the test case can fall in any of the existing Test classes, if yes include your test there. If not, create a new Test class.</li>    
+        <li class="bullet-points">Start building your test case.
+            <ul class="list-unordered">
+                <li class="sub-bullet-points"><a class="sub-bullet-point-mod">Arrange:</a> Set up an require conditions (navigating to a page, initializing variables, etc.).</li>
+                <li class="sub-bullet-points"><a class="sub-bullet-point-mod">Action:</a> Perform clicks, find elements, code any required logic for the test case, etc.</li>
+                <li class="sub-bullet-points"><a class="sub-bullet-point-mod">Assert:</a> Check for the required result, this is usually the acceptance criteria in the story.</li>
+            </ul>
+        </li>
+        <li class="bullet-points">Run your test in DEV and once it passes, run it again in QA.</li>
+        <li class="bullet-points">If the test case is a candidate for regression, add it to the correct playlist (RAMS, API, ARC, etc.).</li>
+        <li class="bullet-points">Make sure to include documentation in your code where it makes sense, some test cases might need pre-requisites or a certain state to pass, be sure to make note of these cases.</li>
+        <li class="bullet-points">Commit your code and push to Azure once the team agrees that the story is done.</li>
+    </ol>
+</div>
+
+
+<!------Structure section------>
+<div class="section-blocks">
+    <h2 class="general-page-tile">Structure</h2>
+    <p>There is a specific structure to Enabling'ss automation framework. It's divided into individual classes for each application and within each application class there are methods to help you navigate around a webpage and perform logic, these are called helper and action methods. </p>
+
+    <ol class="list-ordered">
+        <li class="bullet-points"><a class="sub-bullet-point-mod">Helper Methods</a>
+            <ul class="list-unordered">
+                <li class="sub-bullet-points">Usually contains logic that helps reduce duplicated code (i.e., clicking multiple times in a sequence)</li>
+                <li class="sub-bullet-points">Can be used for anything to help aid in easier readability and coding logic within your test cases.</li>
+            </ul>
+        </li>    
+        <li class="bullet-points"><a class="sub-bullet-point-mod">Action Methods</a>
+            <ul class="list-unordered">
+                <li class="sub-bullet-points">Performs simple actions such as clicks, sending keys, refreshing the page, selecting an element, etc.</li>
+                <li class="sub-bullet-points">You want to keep this simple usually, it should only do one action at once to avoid coupling.</li>
+            </ul>
+        </li>
+        <li class="bullet-points"><a class="sub-bullet-point-mod">Base Class</a>
+            <ul class="list-unordered">
+                <li class="sub-bullet-points">Some classes include a 'Base' class, this class is used for generic things like navigating to a different URL within a webpage.</li>
+            </ul>
+        </li>
+        <li class="bullet-points"><a class="sub-bullet-point-mod">Test Cases Classes</a>
+            <ul class="list-unordered">
+                <li class="sub-bullet-points">This is where your actual test cases reside in</li>
+                <li class="sub-bullet-points">Can do multiple things like retrying tests, dictating testing order, etc.</li>
+                <li class="sub-bullet-points">Assert: Check for the required result, this is usually the acceptance criteria in the story.</li>
+            </ul>
+        </li>
+        <li class="bullet-points"><a class="sub-bullet-point-mod">Main Class</a>
+            <ul class="list-unordered">
+                <li class="sub-bullet-points">Used for initializing Selenium or variables, such as Chromedriver and static types.</li>
+            </ul>
+        </li>
+    </ol>
+</div>
+
+<!------Structure section------>
+<div class="section-blocks">
+    <h2 class="general-page-tile">Structure Diagram</h2>
+    <div class="image-container">
+        <img class="sd-img" src="Structure Diagram.png">
+    </div>
+</div>
+
+<!------Tips section------>
+<div class="section-blocks">
+    <h2 class="general-page-tile">Helpful Tips</h2>
+    <ol class="list-ordered">
+        <li class="bullet-points"><a class="sub-bullet-point-mod">Assessing Elements</a>
+            <ul class="list-unordered">
+                <li class="sub-bullet-points">Try to access an element in this order: ID &rarr; Name &rarr; XPath/CSS Selector</li>
+                <li class="sub-bullet-points">You want to look for element tags that are unique.</li>
+                <li class="sub-bullet-points">Avoid any dynamic changing value.</li>
+                <li class="sub-bullet-points">If you must use a dynamic element, look for the part that stays stable and build your code around that. Example: unique01 &rarr; unique02 &rarr; unique03, extract the stable 'unique' and build logic to grab the element corresponding to 01, 02, and 03. </li>
+                <li class="sub-bullet-points">Keep XPath/CSS Selectors short!</li>
+                <li class="sub-bullet-points">Look for sibling and parent nodes if you’re stuck on accessing an element.</li>
+                <li class="sub-bullet-points">Use functions to help search (i.e., contains, preceding, ancestor, normalize, and, or, etc.).</li>
+            </ul>
+        </li>    
+        <li class="bullet-points"><a class="sub-bullet-point-mod">Reducing Flaky Tests</a>
+            <ul class="list-unordered">
+                <li class="sub-bullet-points">Include wait checks so your pass rate is high as possible.</li>
+                <li class="sub-bullet-points">Implicit waits are more stable than explicit waits. Selenium has a tool called ExpectedConditions, use that or something similar.</li>
+                <li class="sub-bullet-points">Each individual test run should be “unique”, running it back-to-back should not hinder test passing rate.</li>
+                <li class="sub-bullet-points">Debug a flaky test and determine the bottleneck.</li>
+            </ul>
+        </li>
+        <li class="bullet-points"><a class="sub-bullet-point-mod">General</a>
+            <ul class="list-unordered">
+                <li class="sub-bullet-points">When running a lot of tests in a day you may encounter memory leakage from Chromedriver, run the ChromeKill bat file to kill all processes of Chrome and Chromedriver.</li>
+                <li class="sub-bullet-points">Commenting on code will be useful for the future.</li>
+            </ul>
+        </li>
+    </ol>
+</div>
+
+</body>
+</html>
