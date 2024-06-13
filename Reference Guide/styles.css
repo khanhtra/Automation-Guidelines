@@ -1,3 +1,7 @@
+:root{
+    --child-root-color: white;
+}
+
 body{
     font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     color:white;
@@ -59,17 +63,19 @@ body{
 
 .child-root{
     margin: auto;
-    color: whitesmoke;
+    color: var(--child-root-color);
     font-weight: 600;
+    opacity: .8;
 }
 
 a:visited, a:link{
     text-decoration: none;
-    color: whitesmoke;
+    color: var(--child-root-color);
 }
 
 legend[class="child-root"]:hover{
-    transform: scale(1.4);
+    transform: scale(1.5);
+    opacity: 1;
 }
 
 .main-title{

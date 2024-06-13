@@ -31,7 +31,9 @@
         padding: 10;
         font-size: 25px;
     }
-
+    .header-title{
+        margin-top: 10px;
+    }
     .arrow {
         width: 120px;
     }
@@ -56,3 +58,26 @@
     ul{
         color: white;
     }
+
+    .navigation{
+        font-size: 60px;
+        width: 1px;
+        display: inline;
+    }
+    
+    a{
+        text-decoration: none;
+        color: whitesmoke;
+    }
+
+  .home-icon{
+    width: 40px;
+    height: 40px;
+    opacity: .5;
+  }
+
+  img[class="home-icon"]:hover{
+    filter: brightness(0) invert(1);
+    transform: scale(1.2);
+    opacity: 1;
+}
