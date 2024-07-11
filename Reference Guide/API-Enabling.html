@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title class="main-title">Enabling API Guidelines</title>
+    <link rel="stylesheet" href="styles-api-enabling.css">
+</head>
+<body>
+    <div class="main-header">
+        <nav>
+            <a class="navigation" href="Reference.html"><img class="home-icon"src="home_icon.png"></a>
+          </nav>
+        <h1 class="header-title">API Automation Guidelines for Enabling</h1>
+    </div>
+   <!------Things to think about section------>
+<div class="section-blocks">
+    <h2 class="general-page-tile">Overview</h2>
+    <p>Creating automation scripts to test APIs require specific steps to communicate between the API and the code. The typical structure for enabling automation is to set up a connection to the API and then getting a response in order to check/manipulate values from that response. To set up a connection, a HTTP client is required to be initiated. To check for the response from the API, a status code will be returned. Lastly, we must convert the response to an object so the message contents can be read, we achieve this by using deserialization.</p>
+</div>
+
+<!------Structure section------>
+<div class="section-blocks">
+    <h2 class="general-page-tile">Structure</h2>
+
+    <ol class="list-ordered">
+        <li class="bullet-points"><a class="sub-bullet-point-mod">Object Creation/Serialization</a>
+            <ul class="list-unordered">
+                <li class="sub-bullet-points">APIs have a ton of data; we can condense the data and format it so that only information needed is obtained.</li>
+                <li class="sub-bullet-points">In order to do this, we must create an object in the script that only initializes variables that is required.</li>
+            </ul>
+        </li>    
+        <li class="bullet-points"><a class="sub-bullet-point-mod">HTTP Client</a>
+            <ul class="list-unordered">
+                <li class="sub-bullet-points">This allows us to communicate to the API.</li>
+                <li class="sub-bullet-points">Required headers such as authorization tokens and content type are specified here.</li>
+            </ul>
+        </li>
+        <li class="bullet-points"><a class="sub-bullet-point-mod">API Call and Response</a>
+            <ul class="list-unordered">
+                <li class="sub-bullet-points">In order to call an API and get a response back we must specify the API verb on the client (GET, POST, PUT, DELETE, etc.).</li>
+                <li class="sub-bullet-points">A response will be returned, for enabling we use the HttpResponseMessage class to store it.</li>
+            </ul>
+        </li>
+        <li class="bullet-points"><a class="sub-bullet-point-mod">Deserialization </a>
+            <ul class="list-unordered">
+                <li class="sub-bullet-points">The response from the API (usually a JSON object) must be converted to a C# object in order to check and manipulate its data, this is called deserialization.</li>
+            </ul>
+        </li>
+        <li class="bullet-points"><a class="sub-bullet-point-mod">C# Object</a>
+            <ul class="list-unordered">
+                <li class="sub-bullet-points">Using the deserialized message, a C# object is created and can be used like any regular object.</li>
+            </ul>
+        </li>
+    </ol>
+</div>
+
+<!------Structure section------>
+<div class="section-blocks">
+    <h2 class="general-page-tile">Structure Diagram</h2>
+    <div class="image-container">
+        <img class="sd-img" src="API Diagram.png">
+    </div>
+</div>
+
+<!------Example section------>
+<div class="section-blocks">
+    <h2 class="general-page-tile">Cat Fact API Example</h2>
+    <ol class="list-ordered">
+        <li class="bullet-points"><a class="sub-bullet-point-mod">Creating an Object to Parse Data</a>
+            <p class="image-caption">For this example API, it contains two properties attached to its body: length and fact. We are only interested in the property of 'fact'. We create a Cat object and give it the property of 'fact'.</p>
+            <div class="image-container">
+                <img class="ex-img-first" src="Cat Fact Images/API_Example.png">
+                <img class="ex-img" src="Cat Fact Images/Create_Object.png">
+            </div>
+        </li>    
+        
+        <li class="ex-bullet-points"><a class="sub-bullet-point-mod">Intializing a HTTP Client</a>
+            <p class="image-caption">We want to connect to the Cat Fact API, so we have to intialize a HTTP client that will connect to the URL.</p>
+            <div class="image-container">
+                <img class="ex-img" src="Cat Fact Images/HTTP_Client.png">
+            </div>
+        </li>
+        <li class="ex-bullet-points"><a class="sub-bullet-point-mod">Using API Calls and Response</a>
+            <p class="image-caption">In order to read data from the API, we do a GET request on the client. We retrieve the response and store it using the HttpResponseMessage class.</p>
+            <div class="image-container">
+                <img class="ex-img" src="Cat Fact Images/API_Call.png">
+        </li>
+
+        <li class="ex-bullet-points"><a class="sub-bullet-point-mod">Deserialization of the Response</a>
+            <p class="image-caption">Now that a response is successfully obtained, we want to transform/deserialize it into something our code can read. Because the response returns a JSON object, we want to use a JSON deserializer. We will use the object created in step 1.</p>
+            <div class="image-container">
+                <img class="ex-img" src="Cat Fact Images/Deserialize.png">
+            </div>
+        </li>
+        <li class="ex-bullet-points"><a class="sub-bullet-point-mod">Object Manipulation</a>
+            <p class="image-caption">We can now use the response message as an object and manipulate it however we want. In this case, we want to emphasize how cool cat facts are so let's capitalize it!</p>
+            <div class="image-container">
+                <img class="ex-img-first" src="Cat Fact Images/Object_Manipulate.png">
+                <img class="ex-img" src="Cat Fact Images/Cat_Fact_Result.png">
+            </div>
+        </li>
+    </ol>
+</div>
+
+</body>
+</html>
