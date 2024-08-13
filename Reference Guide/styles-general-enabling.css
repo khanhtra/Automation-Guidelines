@@ -57,3 +57,22 @@
         color: white;
     }
     
+    .home-icon{
+        width: 40px;
+        height: 40px;
+        opacity: .5;
+        transition: 1.2s;
+        }
+        
+        img[class="home-icon"]:hover{
+        filter: brightness(0) invert(1);
+        transform: scale(1.2);
+        transition: 1.2s;
+        opacity: 1;
+        }
+
+        .navigation{
+            font-size: 60px;
+            width: 1px;
+            display: inline;
+        }
