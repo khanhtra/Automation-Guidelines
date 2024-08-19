@@ -1,0 +1,91 @@
+:root{
+    background-color: antiquewhite;
+    --box-fontColor: antiquewhite;
+    --box-fontSize: 1.5rem;
+}
+
+.container{
+    display: block;
+    text-align: center;
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    color: slateblue;
+}
+.testB{
+    transition: tranform .8s;
+    color: salmon;
+    width: 6rem;
+    font-size: 1rem;
+}
+.testB:hover{
+    transform: translateY(-.5rem);
+    transition: all .4s;
+}
+
+
+.uno{
+    transition: all .8s;
+    text-align: center;
+    margin: 4rem;
+    border: red solid;
+    background-color: red;
+    padding: 5rem;
+    width: 5rem;
+    color: var(--box-fontColor);
+    font-size: var(--box-fontSize);
+}
+
+.dos{
+    transition: all .8s;
+    text-align: center;
+    margin: 4rem;
+    background-color: blue;
+    padding: 5rem;
+    width: 5rem;
+    color: var(--box-fontColor);
+    font-size: var(--box-fontSize);
+}
+
+.uno:hover{
+    transform: scale(1.2);
+    transition: all .4s;
+}
+
+.dos:hover{
+    transform: scale(1.2);
+    transition: all .4s;
+}
+
+.result{
+    transition: all .8s;
+    text-align: center;
+    align-items: center;
+    margin: 4rem;
+    background-color: black;
+    padding: 5rem;
+    width: 5rem;
+    color: var(--box-fontColor);
+    font-size: var(--box-fontSize);
+}
+
+.result:hover{
+    transform: scale(1.2);
+    transition: all .4s;
+}
+
+.purple{
+    transition: all .8s;
+    text-align: center;
+    margin: 4rem;
+    background-color: purple;
+    padding: 5rem;
+    width: 5rem;
+    color: var(--box-fontColor);
+    font-size: var(--box-fontSize);
+}
+
+.container2{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}

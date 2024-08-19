@@ -73,6 +73,7 @@ a{
 width: 40px;
 height: 40px;
 opacity: .5;
+transform: translateX(200px);
 transition: 1.2s;
 }
 
